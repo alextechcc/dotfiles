@@ -1,0 +1,13 @@
+[dif]
+	tool = nvim -d
+[diff]
+[diff]
+	tool = vimdiff
+[user]
+	email = alex@alextech.cc
+	name = Alex Klemenchuk
+	signingkey = alex@alextech.cc
+[commit]
+	gpgsign = true
+[core]
+	autocrlf = input

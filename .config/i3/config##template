@@ -1,0 +1,251 @@
+set $mod Mod4
+font pango:DejaVuSansMono Nerd Font Mono 11
+
+focus_follows_mouse no
+mouse_warping none
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Move to scratchpad
+bindsym $mod+Shift+u move scratchpad
+bindsym $mod+u scratchpad show
+
+# Launch apps
+bindsym $mod+Return exec --no-startup-id termite
+bindsym $mod+backslash exec --no-startup-id firefox
+bindsym $mod+p exec --no-startup-id rofi-pass
+bindsym $mod+bracketright exec --no-startup-id thunar
+bindsym $mod+bracketleft exec --no-startup-id qutebrowser
+bindsym $mod+shift+i exec --no-startup-id i3lock-fancy-dualmonitor
+bindsym $mod+shift+a exec --no-startup-id gromit-mpx --key "F9"
+bindsym $mod+shift+s exec --no-startup-id flameshot gui -p ~/screenshots
+bindsym $mod+shift+w exec --no-startup-id scrot -u
+bindsym $mod+y exec --no-startup-id unipicker --copy --command "rofi -dmenu"
+
+# Application menus
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+Shift+d exec --no-startup-id rofi -show run
+
+# Alsa Audio controls
+# bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 2 -q sset Headphone 5%+
+# bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 2 -q sset Headphone 5%-
+# bindsym XF86AudioMute exec --no-startup-id pactl amixer -c 2 -q sset Headphone toggle
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec --no-startup-id ~/.toggletouchpad.sh
+
+# Media player controls
+bindsym XF86AudioPlay exec --no-startup-id playerctl play
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# Gaps
+bindsym $mod+Shift+plus  gaps outer current plus 5
+bindsym $mod+Shift+minus gaps outer current minus 5
+bindsym $mod+Shift+0     gaps outer current set 0
+
+bindsym $mod+plus  gaps inner current plus 5
+bindsym $mod+minus gaps inner current minus 5
+bindsym $mod+0     gaps inner current set 0
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+z focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+
+## Manual management of external displays
+set $mode_display Ext Screen (t) TV, (m) Main
+mode "$mode_display" {
+    bindsym m exec --no-startup-id ~/.screenlayout/main.sh, mode "default"
+    bindsym t exec --no-startup-id ~/.screenlayout/tv.sh, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+x mode "$mode_display"
+
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to quit your i3 session?' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # With shift, reduce the ammount we shrink by
+        bindsym Shift+h resize shrink width 1 px or 1 ppt
+        bindsym Shift+j resize grow height 1 px or 1 ppt
+        bindsym Shift+k resize shrink height 1 px or 1 ppt
+        bindsym Shift+l resize grow width 1 px or 1 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Colors
+set $bg-color            #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00    $bg-color
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00    $bg-color
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00    $bg-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00    $bg-color
+
+# Disable borders
+default_border pixel 1
+hide_edge_borders smart
+#hide_edge_borders both
+new_window none
+
+# Run bar
+bar {
+        colors {
+            background #000000
+            statusline #ffffff
+            separator  #666666
+            focused_workspace $bg-color $bg-color $text-color
+        }
+        position top
+        workspace_buttons yes
+        status_command i3status -c ~/.config/i3/i3status.conf
+        tray_padding 0
+        tray_output primary
+        font pango:DejaVuSansMono Nerd Font Mono 12
+}
+
+# Background
+exec_always --no-startup-id feh --bg-scale ~/Dropbox/pics/Wallpapers/geosky.png
+
+# Rebind keys
+exec_always --no-startup-id setxkbmap -option caps:escape
+
+# Turn off beep
+exec --no-startup-id xset b off
+
+# Compositor
+exec --no-startup-id compton -bc
+
+# Apps
+exec --no-startup-id telegram-desktop -startintray -many -workdir ~/.telegram_ketturen/
+exec --no-startup-id thunar --daemon
+exec --no-startup-id riot-desktop --hidden
+exec --no-startup-id dex -a
+exec --no-startup-id nm-applet
+exec --no-startup-id thunderbird
+
+# Floating enable
+for_window [class="Steam"] floating enable
+for_window [class="Teensy" instance="teensy" title="Teensy"] floating enable
+for_window [class="matplotlib"] floating enable
+for_window [class="Display" instance="display" title="ImageMagick: *"] floating enable
+for_window [class="feh" instance="feh" title="feh *"] floating enable
+for_window [class="Yubico Authenticator" instance="yubioath-desktop" title="Yubico Authenticator"] floating enable
+
+# Desktop Specific
+#workspace 1 output DVI-D-0
+#workspace 3 output DP-5

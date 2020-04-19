@@ -1,0 +1,26 @@
+[options]
+font = DejaVuSansMono Nerd Font Mono 12
+
+cursor_blink = off
+cursor_shape = underline
+
+[colors]
+foreground = #ffffff
+cursor     = #ffffff
+background = #000000
+color0     = #141414
+color1     = #ff2c4b
+color2     = #aeee00
+color3     = #fade3e
+color4     = #0a9dff
+color5     = #ff9eb8
+color6     = #8cffba
+color7     = #d9cec3
+color8     = #535353
+color9     = #ff2c4b
+color10    = #aeee00
+color11    = #ffa724
+color12    = #0a9dff
+color13    = #ff9eb8
+color14    = #8cffba
+color15    = #ffffff
