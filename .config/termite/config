@@ -6,7 +6,7 @@ cursor_shape = underline
 
 [colors]
 foreground = #ffffff
-cursor     = #ffffff
+cursor     = #aaaaaa
 background = #000000
 color0     = #141414
 color1     = #ff2c4b

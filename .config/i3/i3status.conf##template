@@ -64,7 +64,7 @@ disk "/" {
 
 {% if yadm.hostname == "archtop" %}
 battery 0 {
-        format = "%status %percentage %remaining %emptytime"
+        format = "%status %percentage %remaining"
         format_down = "No battery"
         status_chr = "CHR"
         status_bat = "BAT"
@@ -75,7 +75,7 @@ battery 0 {
         integer_battery_capacity = true
 }
 battery 1 {
-        format = "%status %percentage %remaining %emptytime"
+        format = "%status %percentage %remaining"
         format_down = "No battery"
         status_chr = "CHR"
         status_bat = "BAT"
