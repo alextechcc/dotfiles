@@ -215,7 +215,12 @@ bar {
         status_command i3status -c ~/.config/i3/i3status.conf
         tray_padding 0
         tray_output primary
+
+{% if yadm.hostname == "archtop" %}
+        font pango:DejaVuSansMono Nerd Font Mono 13
+{% else %}
         font pango:DejaVuSansMono Nerd Font Mono 12
+{% endif %}
 }
 
 # Background
