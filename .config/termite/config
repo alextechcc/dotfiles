@@ -2,11 +2,11 @@
 font = DejaVuSansMono Nerd Font Mono 12
 
 cursor_blink = off
-cursor_shape = underline
+cursor_shape = block
 
 [colors]
 foreground = #ffffff
-cursor     = #aaaaaa
+cursor     = #999999
 background = #000000
 color0     = #141414
 color1     = #ff2c4b
